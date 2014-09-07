@@ -25,6 +25,7 @@
 package com.ajaybhatia.mausam;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import net.aksingh.java.api.owm.CurrentWeatherData;
 import net.aksingh.java.api.owm.OpenWeatherMap;
 
@@ -40,11 +41,17 @@ public class Mausam {
         CurrentWeatherData.Main main = cwd.getMainData_Object();
         
         System.out.println("           City: " + cwd.getCityName());
+        System.out.println("           Code: " + cwd.getCityCode());
         System.out.println("       Latitude: " + coord.getLatitude());
         System.out.println("      Longitude: " + coord.getLongitude());
-        System.out.println("Max. Temperatue: " + main.getMaxTemperature());
-        System.out.println("Min. Temperatue: " + main.getMinTemperature());
+        System.out.println("Max. Temperatue: " + toDegree(main.getMaxTemperature()));
+        System.out.println("Min. Temperatue: " + toDegree(main.getMinTemperature()));
         System.out.println("       Pressure: " + main.getPressure());
         System.out.println("       Humidity: " + main.getHumidity());
+    }
+    
+    public static float toDegree(float fahrenheit) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return Float.parseFloat(df.format((fahrenheit - 32) * 0.555555556f));
     }
 }
