@@ -22,14 +22,27 @@
  * THE SOFTWARE.
  */
 
-package mausam;
+package com.ajaybhatia.mausam;
+
+import java.io.IOException;
+import net.aksingh.java.api.owm.CurrentWeatherData;
+import net.aksingh.java.api.owm.OpenWeatherMap;
 
 /**
  *
  * @author Ajay Bhatia <prof.ajaybhatia@gmail.com>
  */
 public class Mausam {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, org.json.JSONException{
+        OpenWeatherMap own = new OpenWeatherMap("");
+        CurrentWeatherData cwd = own.currentWeatherByCityName("Hoshiarpur", "IN");
+        CurrentWeatherData.Coord coord = cwd.getCoordinates_Object();
+        CurrentWeatherData.Main main = cwd.getMainData_Object();
         
+        System.out.println("           City: " + cwd.getCityName());
+        System.out.println("       Latitude: " + coord.getLatitude());
+        System.out.println("      Longitude: " + coord.getLongitude());
+        System.out.println("Max. Temperatue: " + main.getMaxTemperature());
+        System.out.println("Min. Temperatue: " + main.getMinTemperature());
     }
 }
