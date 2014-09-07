@@ -44,5 +44,7 @@ public class Mausam {
         System.out.println("      Longitude: " + coord.getLongitude());
         System.out.println("Max. Temperatue: " + main.getMaxTemperature());
         System.out.println("Min. Temperatue: " + main.getMinTemperature());
+        System.out.println("       Pressure: " + main.getPressure());
+        System.out.println("       Humidity: " + main.getHumidity());
     }
 }
